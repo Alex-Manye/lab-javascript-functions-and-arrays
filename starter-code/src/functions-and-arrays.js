@@ -1,104 +1,163 @@
+
 // Find the maximum
 
-function maxOfTwoNumbers(a,b) {
-if ( a > b ) { 
-return a
-} else if (a < b) { 
-return b
-  } else if (a = b) { 
-    return b
-  }
+function maxOfTwoNumbers(num1, num2){
+if (num1>num2){
+  return num1;
+} else if (num1<num2){
+  return num2;
+} else {
+  console.log (`The 2 numbers are the same`)
+}
 }
 
-
+maxOfTwoNumbers(3,5);
 
 // Finding Longest Word
-const words = [
-  'mystery',
-  'brother',
-  'aviator',
-  'crocodile',
-  'pearl',
-  'orchard',
-  'crackpot'
-];
 
+let words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord(arr){
-  let longest ="";
-  for (let i=0; i<arr.length;i++){
-    if (arr[i].length > longest.length) 
-    longest = arr[i]
-  }
-    if (arr.length === 0) {
-      return null;
-    }
-  return longest;
+function findLongestWord(wor3) {
+  let longestWord = [];
+
+for (let i=0; i<words.length; i++){
+
+    if (words[i].length > longestWord.length){
+        longestWord = words[i];
+    
+      } 
+  } //return longestWord; 
+  console.log(longestWord);
 }
-//EN JASMINE FUNCIONA, PERO CUANOD LO PONGO EN REPLIT ME SALE UNDEFINED - PREGUNTAR A LOS TA.
 
-// Calculating a Sum
+// Calculating a Sum (with loop);
 
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumArray (arr){
-  let suma=""; //al ser números, ¿serian comillas o []?
-for (let i=0; i<arr.length;i++) {
-suma = arr[i]+suma;   // suma += arr[i]
-}
-if (arr === []) {
-  return zero
-}
-return suma/arr.length;
-}
-//EN REPLIT SALE UNDEFINED Y EN JASMINE El 2 y EL 3 SE QUEDA EN ROJO
+function sumNumbers(){
+    let sumatorio =0;
 
+  for (let i=0; i<numbers.length; i++){
+    sumatorio =numbers[i] + sumatorio
+
+  } 
+}
+
+// Calculating a Sum (with reduce method);
+
+var sum = numbers.reduce(function (sum, num){return sum + num},0);
+//console.log (sum)
+
+function sumNumbersReduce(total, num){
+    return total + num;
+
+}
+
+// A generic sum() function
+
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+//Shoudl return -> 57
+
+function mixedSum(){
+  let suma = 0;
+
+  for (let i=0; i<mixedArr.length; i++){
+      switch (typeof mixedArr[i]){
+
+    case "number":
+      suma += mixedArr[i]; 
+      console.log (suma)
+      break;
+    case "string":
+      suma += parseInt(mixedArr[i].length)
+      console.log (suma)
+      break;
+    case  "boolean":
+        if (mixedArr[i] === true){
+          suma += 1; 
+        } else {
+          suma += 0;
+        } console.log (suma)
+        break;
+  } 
+} return suma;
+
+}
 
 
 // Calculate the Average
 
+const numbers2 = [2, 6, 9, 10, 7, 4, 1, 9 ]; 
+// Should return -> 48/ 8 = 6
+function averageNumbers(){
+    let sum = 0;
+    let avNumbers = 0;
+    for (let i=0; i<numbers2.length; i++){
+      sum += numbers2[i];
+      avNumbers = sum/(numbers2.length)
+    } return avNumbers
 
-const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
-
-function averageNumbers (arr){
-  let avnumber = "";
-  for (let i=0; i<arr.length; i++) {
-    avnumber += arr[i]
-  }
-  if (arr === []) {
-    return null //no funciona porque en jasmine no se pone verde
 }
-    return avnumber/arr.length 
-  }
 
-// Array of Strings
-const wordsArr = [
-  'seat',
-  'correspond',
-  'linen',
-  'motif',
-  'hole',
-  'smell',
-  'smart',
-  'chaos',
-  'fuel',
-  'palace'
+/*Declare a function named averageWordLength that receives as a single argument an array of 
+words and returns the average length of the words:
+*/
+
+const words2 = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+//53/10=5.3
+function averageWordLength(){
+ let avNumber=0;
+ let sum=0;
+ 
+ for (let i=0;i<words2.length;i++){
+      sum += words2[i].length 
+      console.log(sum);
+      console.log(words2.length);
+      avNumber = sum/words2.length 
+  }
+  return avNumber;
+}
+
+//Iteration #4.1: A generic avg() function
+/*
+Create function avg(arr) that receives any mixed array and calculates average. Consider as 
+mixed array an array filled with numbers and/or strings and/or booleans. We are following 
+a similar logic to the one applied on the bonus iteration 4.1. 😉
+
+*/
+
+//Do it with Callback function /Pending - For Product Backlog
+
+// Iteration #5: Unique arrays
+
+const words3 = [
+  'crab',
+  'poison',
+  'contagious',
+  'simple',
+  'bring',
+  'sharp',
+  'playground',
+  'poison',
+  'communion',
+  'simple',
+  'bring'
 ];
 
-function averageWordLength (arr) {
-let avword = "";
-for (let i=0; i<arr.length; i++) {
-avword = arr[i].length
-if (arr === []) {
-  return null // no funciona pq en Jasmine no se pone verde
-}
-}
-return avword
-}
+function uniquifyArray(){
+  let newArray = [];
+
+   for (let i=0; i<words3.length; i++){
+
+    if(newArray.indexOf(words3[i]) === -1){
+      newArray.push(words3[i])
+    }
+  } return newArray;
+} 
+console.log(uniquifyArray(words3));
 
 
-
-// Unique Arrays
 const wordsUnique = [
   'crab',
   'poison',
@@ -113,14 +172,22 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray (arr) {
-for (let i=0; i<arr.length;i++) {
-  let dupli = array.indexOf(arr[i]);
+const uniquifyArray = array => {
 
-// ME he quedado aquí....
+  let uniqueWords = []
+  
+  for(let i = 0; i < array.length; i++){
+    if(uniqueWords.indexOf(array[i]) === -1){
+      uniqueWords.push(array[i])
+    }
+  }
+  return uniqueWords
 }
 
-}
+
+console.log(uniquifyArray(wordsUnique))
+
+
 
 
 // Finding Elements
